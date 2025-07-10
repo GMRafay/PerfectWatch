@@ -12,3 +12,8 @@ export const fetchPopularMovies = async () => {
   const res = await tmdb.get("/movie/popular?language=en-US&page=1");
   return res.data.results;
 };
+
+export const fetchGenres = async () => {
+  const res = await tmdb.get("/genre/movie/list?language=en-US");
+  return res.data.genres;
+};
