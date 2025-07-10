@@ -25,9 +25,9 @@ export default function ContentCard({ movie_details, genres }) {
       <img className=" w-full border rounded-t-xl" src={baseImgUrl + poster_path} />
       <div className="flex flex-row flex-wrap ">
         {genres &&
-          genreNames.map((genre) => <div className="m-2">{genre.name}</div>)}
+          genreNames.map((genre) => <div className="m-2 border rounded-xl p-1 background bg-indigo-200">{genre.name}</div>)}
       </div>
-      <p className="line-clamp-3 m-2">{overview}</p>
+      
     </div>
   );
 }
