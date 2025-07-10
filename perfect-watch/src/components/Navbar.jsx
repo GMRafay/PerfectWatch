@@ -1,11 +1,17 @@
 import NavButton from "./NavButton";
 
-export default function Navbar() {
+export default function Navbar({ setContent }) {
   return (
-    <div className="flex flex-row flex-wrap justify-evenly ">
-      <NavButton>Movies</NavButton>
-      <NavButton>Tv Shows</NavButton>
-      <NavButton>Picks</NavButton>
+    <div className="w-full flex flex-row flex-wrap justify-evenly border border-black">
+      <NavButton setContent={setContent} content={"movies"}>
+        Movies
+      </NavButton>
+      <NavButton setContent={setContent} content={"shows"}>
+        Tv Shows
+      </NavButton>
+      <NavButton setContent={setContent} content={"picks"}>
+        Picks
+      </NavButton>
     </div>
   );
 }
