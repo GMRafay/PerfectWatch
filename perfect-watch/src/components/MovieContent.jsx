@@ -32,12 +32,15 @@ export default function MovieContent() {
   }, []);
   console.log(popMovies);
   return (
-    <div>
-        <ul>
-            {popMovies.map((movie_details) => (
-                <li><ContentCard movie_details={movie_details} genres={genres}/></li>
-            ))}
-        </ul>
+    <div className="text-center">
+      Todays Popular Movies
+      <ul className="grid grid-cols-5 grid-rows-4">
+        {popMovies.map((movie_details) => (
+          <li key={movie_details.id}>
+            <ContentCard movie_details={movie_details} genres={genres} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

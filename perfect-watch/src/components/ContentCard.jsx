@@ -18,14 +18,15 @@ export default function ContentCard({ movie_details, genres }) {
   if (genres) {
     genreNames = genres.filter((genre) => genre_ids.includes(genre.id));
   }
-  
+
   const baseImgUrl = "http://image.tmdb.org/t/p/original";
   return (
-    <div className="flex ">
-      <div>
-        <img className="h-50" src={baseImgUrl + poster_path} />
-        {genres && genreNames.map((genre) => <div>{genre.name}</div>)}
+    <div className="flex flex-col justify-center items-center border border-black">
+      <img className="h-80 w-50" src={baseImgUrl + poster_path} />
+      <div className="flex flex-row">
+        {genres && genreNames.map((genre) => <div className='m-2'>{genre.name}</div>)}
       </div>
+      <p>{overview}</p>
     </div>
   );
 }
