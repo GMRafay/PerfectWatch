@@ -6,14 +6,14 @@ import TvShowsContent from "./components/TvShowsContent";
 import Picks from "./components/Picks";
 
 function App() {
-  const [content,setContent] = useState('movies')
+  const [content, setContent] = useState("movies");
   return (
-    <>
-      <Header setContent={setContent}/>
-      {content == 'movies' && <MovieContent/>}
-      {content == 'shows' && <TvShowsContent/>}
-      {content == 'picks' && <Picks/>}
-    </>
+    <div className="bg-linear-to-b from-white-400 to-indigo-400">
+      <Header setContent={setContent} />
+      {content == "movies" && <MovieContent />}
+      {content == "shows" && <TvShowsContent />}
+      {content == "picks" && <Picks />}
+    </div>
   );
 }
 

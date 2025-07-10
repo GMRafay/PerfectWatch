@@ -34,7 +34,7 @@ export default function MovieContent() {
   return (
     <div className="text-center">
       Todays Popular Movies
-      <ul className="grid grid-cols-5 grid-rows-4">
+      <ul className="grid lg:grid-cols-5 lg:grid-rows-4 md:grid-cols-3 sm:grid-cols-1 ">
         {popMovies.map((movie_details) => (
           <li key={movie_details.id}>
             <ContentCard movie_details={movie_details} genres={genres} />
