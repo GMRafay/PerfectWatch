@@ -17,3 +17,10 @@ export const fetchGenres = async () => {
   const res = await tmdb.get("/genre/movie/list?language=en-US");
   return res.data.genres;
 };
+
+export const fetchMoviesByGenre = async (genre, page = 1) => {
+  const res = await tmdb.get(
+    `/discover/movie?include_adult=false&include_video=false&language=en-US&&page=${page}&with_genres=${genre}&sort_by=popularity.desc`
+  );
+  return res.data.results;
+};
