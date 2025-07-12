@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { fetchPopularMovies, fetchGenres } from "../services/tmdb";
+import { fetchGenres } from "../services/tmdb";
 import ContentCard from "./ContentCard";
 import PopularMovies from "./PopularMovies";
 import GenreContent from "./GenreContent";
 
 export default function MovieContent() {
   const [genreDisplayed, setGenreDisplayed] = useState("popular");
+  const [movieDataPage, setMovieDataPage] = useState(1);
 
   const [genres, setGenres] = useState([]);
   useEffect(() => {
@@ -22,8 +23,8 @@ export default function MovieContent() {
   }, []);
 
   function handleGenreSwitch(e) {
+    setMovieDataPage(1);
     setGenreDisplayed(e.target.value);
-    
   }
 
   return (
@@ -41,7 +42,12 @@ export default function MovieContent() {
       {genreDisplayed == "popular" ? (
         <PopularMovies genresList={genres} />
       ) : (
-        <GenreContent genre={genreDisplayed} genresList={genres} />
+        <GenreContent
+          genre={genreDisplayed}
+          genresList={genres}
+          movieDataPage={movieDataPage}
+          setMovieDataPage={setMovieDataPage}
+        />
       )}
     </div>
   );

@@ -2,9 +2,13 @@ import { useState, useEffect } from "react";
 import { fetchMoviesByGenre } from "../services/tmdb";
 import ContentCard from "./ContentCard";
 
-export default function GenreContent({ genre, genresList }) {
+export default function GenreContent({
+  genre,
+  genresList,
+  movieDataPage,
+  setMovieDataPage,
+}) {
   const [moviesList, setMoviesList] = useState([]);
-  const [movieDataPage, setMovieDataPage] = useState(1);
 
   const genreId = genresList.filter((genreItem) => genreItem.name == genre)[0]
     .id;
