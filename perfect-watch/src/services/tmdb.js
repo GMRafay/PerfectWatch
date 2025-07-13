@@ -24,3 +24,32 @@ export const fetchMoviesByGenre = async (genre, page = 1) => {
   );
   return res.data.results;
 };
+
+export const fetchMovieRecommendations = async (movie_id) => {
+  const res = await tmdb.get(
+    `/movie/${movie_id}/recommendations?language=en-US&page=1`
+  );
+
+  return res.data.results;
+};
+
+export const fetchMovieReviews = async (movie_id) => {
+  const res = await tmdb.get(
+    `/movie/${movie_id}/reviews?language=en-US&page=1`
+  );
+
+  return res.data.results;
+};
+
+export const fetchSimilarMovies = async (movie_id) => {
+  const res = await tmdb.get(
+    `/movie/${movie_id}/similar?language=en-US&page=1`
+  );
+
+  return res.data.results;
+};
+
+export const fetchMovieDetails = async (movie_id) => {
+  const res = await tmdb.get("/movie/movie_id?language=en-US");
+  return res.data.results;
+};

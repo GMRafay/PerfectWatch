@@ -6,9 +6,6 @@ export default function Navbar({ setContent }) {
       <NavButton setContent={setContent} content={"movies"}>
         Movies
       </NavButton>
-      <NavButton setContent={setContent} content={"shows"}>
-        Tv Shows
-      </NavButton>
       <NavButton setContent={setContent} content={"picks"}>
         Picks
       </NavButton>

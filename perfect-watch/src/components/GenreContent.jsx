@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchMoviesByGenre } from "../services/tmdb";
 import ContentCard from "./ContentCard";
+import { Popup } from "./Popup";
 
 export default function GenreContent({
   genre,
@@ -9,9 +10,10 @@ export default function GenreContent({
   setMovieDataPage,
 }) {
   const [moviesList, setMoviesList] = useState([]);
-
+  const [displayPopup, setDisplayPopup] = useState(false);
   const genreId = genresList.filter((genreItem) => genreItem.name == genre)[0]
     .id;
+  const [selectedMovieId, setSelectedMovieId] = useState("");
   useEffect(() => {
     async function getMoviesByGenre(genreId, movieDataPage) {
       try {
@@ -33,12 +35,21 @@ export default function GenreContent({
     const currPage = movieDataPage;
     setMovieDataPage(currPage + 1);
   }
+
+  function handlePopup(movie_id) {
+    console.log(movie_id);
+    setDisplayPopup(!displayPopup);
+    setSelectedMovieId(movie_id);
+  }
   return (
     <div className="flex flex-col items-center">
+      {displayPopup && <Popup movie_id={selectedMovieId} />}
       <ul className="grid lg:grid-cols-5 lg:grid-rows-4 md:grid-cols-3 sm:grid-cols-1 ">
         {moviesList.map((movie) => (
           <li key={movie.id}>
-            <ContentCard movie_details={movie} genres={genresList} />
+            <button onClick={() => handlePopup(movie.id)}>
+              <ContentCard movie_details={movie} genres={genresList} />
+            </button>
           </li>
         ))}
       </ul>
