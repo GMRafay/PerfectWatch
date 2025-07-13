@@ -19,7 +19,6 @@ export default function GenreContent({
       try {
         const movies = await fetchMoviesByGenre(genreId, movieDataPage);
         if (movieDataPage == 1) {
-          console.log(movies);
           setMoviesList(movies);
         } else {
           setMoviesList((prev) => [...prev, ...movies]);
@@ -37,13 +36,12 @@ export default function GenreContent({
   }
 
   function handlePopup(movie_id) {
-    console.log(movie_id);
-    setDisplayPopup(!displayPopup);
+    setDisplayPopup(true);
     setSelectedMovieId(movie_id);
   }
   return (
     <div className="flex flex-col items-center">
-      {displayPopup && <Popup movie_id={selectedMovieId} />}
+      {displayPopup && <Popup movie_id={selectedMovieId} setDisplayPopup={setDisplayPopup} />}
       <ul className="grid lg:grid-cols-5 lg:grid-rows-4 md:grid-cols-3 sm:grid-cols-1 ">
         {moviesList.map((movie) => (
           <li key={movie.id}>

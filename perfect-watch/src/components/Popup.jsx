@@ -5,7 +5,7 @@ import {
   fetchSimilarMovies,
 } from "../services/tmdb";
 
-export function Popup({ movie_id }) {
+export function Popup({ movie_id, setDisplayPopup }) {
   const [movieDetails, setMovieDetails] = useState([]);
   const [similarMovies, setSimilarMovies] = useState([]);
   const [recommendations, setRecommendations] = useState();
@@ -31,10 +31,25 @@ export function Popup({ movie_id }) {
     getMovieData();
   }, [movie_id]);
 
+  const baseImgUrl = "http://image.tmdb.org/t/p/original";
+  const fullImgUrl = baseImgUrl + movieDetails.poster_path;
+  console.log("this is the movie details below");
+  console.log(movieDetails);
+
   return (
-    <div className="bg-white border-white rounded-xl z-3 fixed top-25 bottom-100 sm:w-10 sm:h-10 md:w-200 md:h-180 overscroll-auto  md:overscroll-contain">
-      <div className="flex flex-col">
-        <img src=""></img>
+    <div className="fixed inset-0 z-50 flex items-center justify-center ">
+      <div className="bg-white w-[90%] max-w-2xl h-[80vh] overflow-y-auto rounded-lg shadow-lg p-6">
+        <button onClick={() => setDisplayPopup(false)}>Go Back</button>
+        <div className="flex flex-col items-center">
+          <img
+            src={fullImgUrl}
+            alt={movieDetails.title}
+            className="w-full max-w-xs rounded-md mb-4 object-cover"
+          />
+          <h2 className="text-xl font-bold mb-2">{movieDetails.title}</h2>
+          <p className="text-sm text-gray-700">{movieDetails.overview}</p>
+          {/* Add more details below */}
+        </div>
       </div>
     </div>
   );

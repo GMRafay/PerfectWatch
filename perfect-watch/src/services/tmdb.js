@@ -50,6 +50,6 @@ export const fetchSimilarMovies = async (movie_id) => {
 };
 
 export const fetchMovieDetails = async (movie_id) => {
-  const res = await tmdb.get("/movie/movie_id?language=en-US");
-  return res.data.results;
+  const res = await tmdb.get(`/movie/${movie_id}?language=en-US`);
+  return res.data;
 };
