@@ -49,12 +49,21 @@ export function Popup({ movie_id, setDisplayPopup }) {
         <button className="fixed z-51" onClick={() => setDisplayPopup(false)}>
           Go Back
         </button>
+        <button className="fixed z-53 right-150 ">Pick</button>
         <div className="flex flex-col items-center">
-          <img
-            src={fullImgUrl}
-            alt={movieDetails.title}
-            className="w-full max-w-xs rounded-md mb-4 object-cover"
-          />
+          <div className="relative w-full max-w-xs mb-4">
+            <img
+              src={fullImgUrl}
+              alt={movieDetails.title}
+              className="w-full rounded-md mb-4 object-cover"
+            />
+            <button
+              onClick={() => handlePick(movieDetails)}
+              className="absolute top-2 right-2 bg-indigo-500 text-white px-3 py-1 text-sm rounded hover:bg-indigo-600"
+            >
+              Pick
+            </button>
+          </div>
           <div className="flex flex-row-reverse justify-around ">
             <h2 className="text-xl font-bold mb-2 order-2 ">
               {movieDetails.title}
