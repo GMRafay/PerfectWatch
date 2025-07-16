@@ -7,12 +7,15 @@ import Picks from "./components/Picks";
 
 function App() {
   const [content, setContent] = useState("movies");
+  const [picks, setPicks] = useState([]);
   return (
     <div className="bg-linear-to-b from-white-400 to-indigo-400 ">
       <Header setContent={setContent} />
-      {content == "movies" && <MovieContent />}
+      {content == "movies" && (
+        <MovieContent setPicks={setPicks} picks={picks} />
+      )}
       {content == "shows" && <TvShowsContent />}
-      {content == "picks" && <Picks />}
+      {content == "picks" && <Picks picks={picks} />}
     </div>
   );
 }

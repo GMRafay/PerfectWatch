@@ -1,3 +1,9 @@
-export default function Picks() {
-  return <>Your movie picks</>;
+export default function Picks({ picks }) {
+  return (
+    <div>
+      {picks.map((pick) => (
+        <p>{pick}</p>
+      ))}
+    </div>
+  );
 }

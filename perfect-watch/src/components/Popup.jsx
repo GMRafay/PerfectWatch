@@ -5,7 +5,7 @@ import {
   fetchSimilarMovies,
 } from "../services/tmdb";
 
-export function Popup({ movie_id, setDisplayPopup }) {
+export function Popup({ movie_id, setDisplayPopup, setPicks, picks }) {
   const [movieDetails, setMovieDetails] = useState([]);
   const [similarMovies, setSimilarMovies] = useState([]);
   const [recommendations, setRecommendations] = useState();
@@ -41,6 +41,13 @@ export function Popup({ movie_id, setDisplayPopup }) {
   function handleClick(index) {
     setExpanded(index);
   }
+
+  function handlePick(movie_title) {
+    const arr = [...picks];
+    arr.push(movie_title);
+    setPicks(arr);
+    console.log(arr);
+  }
   const [expanded, setExpanded] = useState(0);
   console.log(similarMoviePosters);
   return (
@@ -58,7 +65,7 @@ export function Popup({ movie_id, setDisplayPopup }) {
               className="w-full rounded-md mb-4 object-cover"
             />
             <button
-              onClick={() => handlePick(movieDetails)}
+              onClick={() => handlePick(movieDetails.title)}
               className="absolute top-2 right-2 bg-indigo-500 text-white px-3 py-1 text-sm rounded hover:bg-indigo-600"
             >
               Pick

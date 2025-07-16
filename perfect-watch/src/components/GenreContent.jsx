@@ -8,6 +8,9 @@ export default function GenreContent({
   genresList,
   movieDataPage,
   setMovieDataPage,
+  setPicks,
+  picks,
+
 }) {
   const [moviesList, setMoviesList] = useState([]);
   const [displayPopup, setDisplayPopup] = useState(false);
@@ -41,7 +44,7 @@ export default function GenreContent({
   }
   return (
     <div className="flex flex-col items-center">
-      {displayPopup && <Popup movie_id={selectedMovieId} setDisplayPopup={setDisplayPopup} />}
+      {displayPopup && <Popup movie_id={selectedMovieId} setDisplayPopup={setDisplayPopup} setPicks={setPicks} picks={picks}/>}
       <ul className="grid lg:grid-cols-5 lg:grid-rows-4 md:grid-cols-3 sm:grid-cols-1 ">
         {moviesList.map((movie) => (
           <li key={movie.id}>
