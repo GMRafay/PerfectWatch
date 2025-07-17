@@ -18,16 +18,14 @@ export default function Picks({ picks }) {
   console.log("picks below");
   console.log(picks);
   return (
-    <div className="flex flex-center">
-      <div className="grid lg:grid-cols-5 lg:grid-rows-4 md:grid-cols-3 sm:grid-cols-1">
-        <ul>
-          {picks.map((movie) => (
-            <li key={movie.id}>
-              <PicksContentCard movie_details={movie} genres={genres} />
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className="flex items-center flex-col">
+      <ul className="grid lg:grid-cols-5 lg:grid-rows-4 md:grid-cols-3 sm:grid-cols-1">
+        {picks.map((movie) => (
+          <li key={movie.id}>
+            <PicksContentCard movie_details={movie} genres={genres} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
