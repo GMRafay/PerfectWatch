@@ -25,7 +25,9 @@ export default function PopularMovies({ genresList }) {
       return;
     }
     setMovieFilterSwitch(1);
-    const filteredId = genresList.filter((genre) => genre.name === e.target.value);
+    const filteredId = genresList.filter(
+      (genre) => genre.name === e.target.value
+    );
     console.log(filteredId[0].id);
     if (filteredId) {
       const filtered = popMovies.filter((movie) =>
@@ -38,36 +40,24 @@ export default function PopularMovies({ genresList }) {
 
   return (
     <div className="text-center">
-      Todays Popular Movies
-      <label>
-        Filter movie by Genre
-        <select
-          className="m-5"
-          name="genre_filter"
-          id="genre_filter"
-          onChange={(e) => handleFilter(e)}
-        >
-          <option key="21" value="clear">
-            Clear Filters
-          </option>
-          {genresList.map((genre) => (
-            <option key={genre.id} value={genresList.name}>
-              {" "}
-              {genre.name}
-            </option>
-          ))}
-        </select>
-      </label>
+      <text>Todays Popular Movies</text>
+
       <ul className="grid lg:grid-cols-5 lg:grid-rows-4 md:grid-cols-3 sm:grid-cols-1 ">
         {movieFilterSwitch == 0
           ? popMovies.map((movie_details) => (
               <li key={movie_details.id}>
-                <ContentCard movie_details={movie_details} genres={genresList} />
+                <ContentCard
+                  movie_details={movie_details}
+                  genres={genresList}
+                />
               </li>
             ))
           : filteredMovies.map((movie_details) => (
               <li key={movie_details.id}>
-                <ContentCard movie_details={movie_details} genres={genresList} />
+                <ContentCard
+                  movie_details={movie_details}
+                  genres={genresList}
+                />
               </li>
             ))}
       </ul>
