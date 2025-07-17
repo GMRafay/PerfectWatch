@@ -42,11 +42,16 @@ export function Popup({ movie_id, setDisplayPopup, setPicks, picks }) {
     setExpanded(index);
   }
 
-  function handlePick(movie_title) {
+  function handlePick(movie_details) {
+    if (picks.includes(movieDetails)) {
+      alert("already added to picks");
+      return;
+    }
     const arr = [...picks];
-    arr.push(movie_title);
+    arr.push(movie_details);
     setPicks(arr);
     console.log(arr);
+    alert("added to picks");
   }
   const [expanded, setExpanded] = useState(0);
   console.log(similarMoviePosters);
@@ -56,7 +61,7 @@ export function Popup({ movie_id, setDisplayPopup, setPicks, picks }) {
         <button className="fixed z-51" onClick={() => setDisplayPopup(false)}>
           Go Back
         </button>
-        <button className="fixed z-53 right-150 ">Pick</button>
+
         <div className="flex flex-col items-center">
           <div className="relative w-full max-w-xs mb-4">
             <img
@@ -65,8 +70,8 @@ export function Popup({ movie_id, setDisplayPopup, setPicks, picks }) {
               className="w-full rounded-md mb-4 object-cover"
             />
             <button
-              onClick={() => handlePick(movieDetails.title)}
-              className="absolute top-2 right-2 bg-indigo-500 text-white px-3 py-1 text-sm rounded hover:bg-indigo-600"
+              onClick={() => handlePick(movieDetails)}
+              className="absolute top-2 right-2 bg-indigo-800 text-white px-3 py-1 text-sm rounded hover:bg-indigo-600"
             >
               Pick
             </button>

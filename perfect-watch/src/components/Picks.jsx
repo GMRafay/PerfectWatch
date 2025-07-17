@@ -2,7 +2,7 @@ export default function Picks({ picks }) {
   return (
     <div>
       {picks.map((pick) => (
-        <p>{pick}</p>
+        <p>{pick.title}</p>
       ))}
     </div>
   );
