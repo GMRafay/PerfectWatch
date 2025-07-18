@@ -4,7 +4,7 @@ import ContentCard from "./ContentCard";
 import PopularMovies from "./PopularMovies";
 import GenreContent from "./GenreContent";
 
-export default function MovieContent({ setPicks, picks }) {
+export default function MovieContent({ setPicks, picks, setSelectedMovieId }) {
   const [genreDisplayed, setGenreDisplayed] = useState("popular");
   const [movieDataPage, setMovieDataPage] = useState(1);
 
@@ -40,15 +40,17 @@ export default function MovieContent({ setPicks, picks }) {
         </select>
       </label>
       {genreDisplayed == "popular" ? (
-        <PopularMovies genresList={genres} setPicks={setPicks} picks={picks} />
+        <PopularMovies
+          genresList={genres}
+          setSelectedMovieId={setSelectedMovieId}
+        />
       ) : (
         <GenreContent
           genre={genreDisplayed}
           genresList={genres}
           movieDataPage={movieDataPage}
           setMovieDataPage={setMovieDataPage}
-          setPicks={setPicks}
-          picks={picks}
+          setSelectedMovieId={setSelectedMovieId}
         />
       )}
     </div>

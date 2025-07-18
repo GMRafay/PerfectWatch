@@ -8,15 +8,13 @@ export default function GenreContent({
   genresList,
   movieDataPage,
   setMovieDataPage,
-  setPicks,
-  picks,
-
+  setSelectedMovieId,
 }) {
   const [moviesList, setMoviesList] = useState([]);
-  const [displayPopup, setDisplayPopup] = useState(false);
+
   const genreId = genresList.filter((genreItem) => genreItem.name == genre)[0]
     .id;
-  const [selectedMovieId, setSelectedMovieId] = useState("");
+
   useEffect(() => {
     async function getMoviesByGenre(genreId, movieDataPage) {
       try {
@@ -38,17 +36,12 @@ export default function GenreContent({
     setMovieDataPage(currPage + 1);
   }
 
-  function handlePopup(movie_id) {
-    setDisplayPopup(true);
-    setSelectedMovieId(movie_id);
-  }
   return (
     <div className="flex flex-col items-center">
-      {displayPopup && <Popup movie_id={selectedMovieId} setDisplayPopup={setDisplayPopup} setPicks={setPicks} picks={picks}/>}
       <ul className="grid lg:grid-cols-5 lg:grid-rows-4 md:grid-cols-3 sm:grid-cols-1 ">
         {moviesList.map((movie) => (
           <li key={movie.id}>
-            <button onClick={() => handlePopup(movie.id)}>
+            <button onClick={() => setSelectedMovieId(movie.id)}>
               <ContentCard movie_details={movie} genres={genresList} />
             </button>
           </li>
