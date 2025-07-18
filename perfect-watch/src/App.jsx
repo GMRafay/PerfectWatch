@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="bg-gradient-to-b from-white to-indigo-400 relative">
-      <Header setContent={setContent} />
+      <Header setContent={setContent} content={content}/>
       <AnimatePresence mode="wait">
         {content === "movies" && (
           <motion.div

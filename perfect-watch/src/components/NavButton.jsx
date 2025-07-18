@@ -1,10 +1,26 @@
-export default function NavButton({ setContent, children, content }) {
+export default function NavButton({
+  setContent,
+  children,
+  content,
+  active,
+  setActive,
+}) {
+  function handleClick() {
+    setContent(content);
+    if (content == "movies" && active == "picks") {
+      setActive("movies");
+    } else if (content == "picks" && active == "movies") {
+      setActive("picks");
+    }
+  }
   return (
     <button
-      className="border border-5 rounded-xl text-white bg-indigo-400 border-indigo-500 pl-5 pr-5 "
-      onClick={() => setContent(content)}
+      className={`w-[50%] border text-white bg-${
+        active != content ? "white-500" : "indigo-400"
+      } pl-5 pr-5 transition-colors duration-700 ease-in-out`}
+      onClick={() => handleClick()}
     >
-      {children}
+      <p className="text-black">{children}</p>
     </button>
   );
 }
