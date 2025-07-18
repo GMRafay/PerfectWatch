@@ -29,16 +29,25 @@ export default function MovieContent({ setSelectedMovieId }) {
 
   return (
     <div>
-      <label>
-        Search movies by genre
-        <select onChange={(e) => handleGenreSwitch(e)}>
+      <div className="flex flex-row justify-start gap-5 space-y-2 mb-6">
+        <label
+          htmlFor="genreSelect"
+          className="text-lg font-semibold text-gray-800 mt-5.5 ml-5"
+        >
+          Search movies by genre
+        </label>
+        <select
+          id="genreSelect"
+          onChange={(e) => handleGenreSwitch(e)}
+          className="px-4 py-2 mt-5 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 bg-white text-gray-800"
+        >
           {genres.map((genre) => (
             <option key={genre.id} value={genre.name}>
               {genre.name}
             </option>
           ))}
         </select>
-      </label>
+      </div>
       <AnimatePresence mode="wait">
         {genreDisplayed == "popular" ? (
           <motion.div
