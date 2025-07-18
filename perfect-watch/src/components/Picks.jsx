@@ -26,6 +26,11 @@ export default function Picks({ picks }) {
           </li>
         ))}
       </ul>
+      {picks.length == 0 && (
+        <p className="w-full h-screen flex items-center justify-center ">
+          Go to the movies tab to add some movies to your picks!
+        </p>
+      )}
     </div>
   );
 }

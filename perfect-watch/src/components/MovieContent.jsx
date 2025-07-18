@@ -3,8 +3,8 @@ import { fetchGenres } from "../services/tmdb";
 import ContentCard from "./ContentCard";
 import PopularMovies from "./PopularMovies";
 import GenreContent from "./GenreContent";
-
-export default function MovieContent({ setPicks, picks, setSelectedMovieId }) {
+import { motion, AnimatePresence } from "framer-motion";
+export default function MovieContent({ setSelectedMovieId }) {
   const [genreDisplayed, setGenreDisplayed] = useState("popular");
   const [movieDataPage, setMovieDataPage] = useState(1);
 
@@ -39,20 +39,38 @@ export default function MovieContent({ setPicks, picks, setSelectedMovieId }) {
           ))}
         </select>
       </label>
-      {genreDisplayed == "popular" ? (
-        <PopularMovies
-          genresList={genres}
-          setSelectedMovieId={setSelectedMovieId}
-        />
-      ) : (
-        <GenreContent
-          genre={genreDisplayed}
-          genresList={genres}
-          movieDataPage={movieDataPage}
-          setMovieDataPage={setMovieDataPage}
-          setSelectedMovieId={setSelectedMovieId}
-        />
-      )}
+      <AnimatePresence mode="wait">
+        {genreDisplayed == "popular" ? (
+          <motion.div
+            key="popular"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            exit={{ opacity: 0 }}
+          >
+            <PopularMovies
+              genresList={genres}
+              setSelectedMovieId={setSelectedMovieId}
+            />
+          </motion.div>
+        ) : (
+          <motion.div
+            key={genreDisplayed}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            exit={{ opacity: 0 }}
+          >
+            <GenreContent
+              genre={genreDisplayed}
+              genresList={genres}
+              movieDataPage={movieDataPage}
+              setMovieDataPage={setMovieDataPage}
+              setSelectedMovieId={setSelectedMovieId}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
