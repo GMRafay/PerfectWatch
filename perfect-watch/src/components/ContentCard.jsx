@@ -22,12 +22,18 @@ export default function ContentCard({ movie_details, genres }) {
   const baseImgUrl = "http://image.tmdb.org/t/p/original";
   return (
     <div className="flex flex-col justify-center items-center border border-black rounded-xl m-5 bg-white shadow-2xl">
-      <img className=" w-full border rounded-t-xl" src={baseImgUrl + poster_path} />
+      <img
+        className=" w-full border rounded-t-xl"
+        src={baseImgUrl + poster_path}
+      />
       <div className="flex flex-row flex-wrap ">
         {genres &&
-          genreNames.map((genre) => <div className="m-2 border rounded-xl p-1 background bg-indigo-200">{genre.name}</div>)}
+          genreNames.map((genre) => (
+            <div className="m-2 border rounded-xl p-1 background bg-indigo-200 text-black">
+              {genre.name}
+            </div>
+          ))}
       </div>
-      
     </div>
   );
 }

@@ -58,7 +58,10 @@ export function Popup({ movie_id, setDisplayPopup, setPicks, picks }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center ">
       <div className="bg-white w-[90%] max-w-2xl h-[80vh] overflow-y-auto rounded-lg shadow-lg p-6">
-        <button className="fixed z-51" onClick={() => setDisplayPopup(false)}>
+        <button
+          className="fixed z-51 text-black"
+          onClick={() => setDisplayPopup(false)}
+        >
           Go Back
         </button>
 

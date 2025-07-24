@@ -10,7 +10,7 @@ export default function PicksContentCard({ movie_details }) {
       <div className="flex flex-row flex-wrap ">
         {movie_details.genres &&
           movie_details.genres.map((genre) => (
-            <div className="m-2 border rounded-xl p-1 background bg-indigo-200">
+            <div className="m-2 border rounded-xl p-1 background bg-indigo-200 text-black">
               {genre.name}
             </div>
           ))}
