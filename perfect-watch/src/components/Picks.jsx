@@ -35,16 +35,22 @@ export default function Picks({ picks }) {
         Your Picks
       </text>
       {picks.length != 0 && (
-        <div className="flex items-center justify-center">
-          <button onClick={handleRandom} className="border-black text-black">
+        <div className="flex items-center gap-5 justify-center w-full ">
+          <button onClick={handleRandom} className="btn btn-primary">
             Randomized Pick❓
           </button>
+          <div className="bg-white">
+
           <input
             type="text"
-            className="bg-white mr-5"
-            onChange={(e) => setPrompt(e.target.value)}
+            className="bg-white mr-5 w-100 text text-base-300"
+            placeholder="Describe the type of movie you would like to watch"
+            onChange={(e) => setPrompt(e.target.value)
+        
+            }
           />
-          <button className="text-black">Ask Ai ?</button>
+          <button className="btn btn-">Ask Ai ?</button>
+          </div>
         </div>
       )}
       <dialog id="random_modal" className="modal" ref={modal}>
