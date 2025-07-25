@@ -9,7 +9,9 @@ const tmdb = axios.create({
 });
 
 export const fetchPopularMovies = async () => {
-  const res = await tmdb.get("/movie/popular?language=en-US&page=1");
+  const res = await tmdb.get(
+    `/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&certification_country=US&certification.lte=R&without_keywords=159551`
+  );
   return res.data.results;
 };
 
@@ -20,14 +22,14 @@ export const fetchGenres = async () => {
 
 export const fetchMoviesByGenre = async (genre, page = 1) => {
   const res = await tmdb.get(
-    `/discover/movie?include_adult=false&include_video=false&language=en-US&&page=${page}&with_genres=${genre}&sort_by=popularity.desc`
+    `/discover/movie?include_adult=false&include_video=false&certification.lte=R&language=en-US&page=${page}&with_genres=${genre}&sort_by=popularity.desc&certification.lte=R&without_keywords=159551`
   );
   return res.data.results;
 };
 
 export const fetchMovieRecommendations = async (movie_id) => {
   const res = await tmdb.get(
-    `/movie/${movie_id}/recommendations?language=en-US&page=1`
+    `/movie/${movie_id}/recommendations?language=en-US&page=1&certification.lte=R`
   );
 
   return res.data.results;
@@ -43,7 +45,7 @@ export const fetchMovieReviews = async (movie_id) => {
 
 export const fetchSimilarMovies = async (movie_id) => {
   const res = await tmdb.get(
-    `/movie/${movie_id}/similar?language=en-US&page=1`
+    `/movie/${movie_id}/similar?language=en-US&page=1&certification.lte=R`
   );
 
   return res.data.results;

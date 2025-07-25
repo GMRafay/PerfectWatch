@@ -28,8 +28,8 @@ export default function ContentCard({ movie_details, genres }) {
       />
       <div className="flex flex-row flex-wrap ">
         {genres &&
-          genreNames.map((genre) => (
-            <div className="m-2 border rounded-xl p-1 background bg-indigo-200 text-black">
+          genreNames.map((genre,index) => (
+            <div key={index} className="m-2 border rounded-xl p-1 background bg-indigo-200 text-black">
               {genre.name}
             </div>
           ))}

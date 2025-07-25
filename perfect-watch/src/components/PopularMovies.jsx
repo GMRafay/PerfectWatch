@@ -11,6 +11,7 @@ export default function PopularMovies({ genresList, setSelectedMovieId }) {
         const movies = await fetchPopularMovies();
 
         setPopMovies(movies);
+        console.log(movies);
       } catch (err) {
         console.log(err);
       }
@@ -20,9 +21,9 @@ export default function PopularMovies({ genresList, setSelectedMovieId }) {
 
   return (
     <div className="flex flex-col items-center">
-      <text className="mb-5 font-bold text-transparent text-2xl bg-clip-text bg-gradient-to-r from-indigo-800 to-indigo-400 ">
+      <p className="mb-5 font-bold text-transparent text-2xl bg-clip-text bg-gradient-to-r from-indigo-800 to-indigo-400 ">
         Todays Popular Movies
-      </text>
+      </p>
       <ul className="grid lg:grid-cols-5 lg:grid-rows-4 md:grid-cols-3 sm:grid-cols-1 ">
         {popMovies.map((movie_details) => (
           <li key={movie_details.id}>

@@ -15,8 +15,8 @@ export default function NavButton({
   }
   return (
     <button
-      className={`w-[50%] border text-white bg-${
-        active != content ? "white-500" : "indigo-400"
+      className={`w-[50%] border-black btn ${
+        active != content ? "btn-secondary" : "btn-primary"
       } pl-5 pr-5 transition-colors duration-700 ease-in-out`}
       onClick={() => handleClick()}
     >

@@ -80,15 +80,15 @@ export function Popup({ movie_id, setDisplayPopup, setPicks, picks }) {
             </button>
           </div>
           <div className="flex flex-row-reverse justify-around ">
-            <h2 className="text-xl font-bold mb-2 order-2 ">
+            <h2 className="text-xl font-bold mb-2 order-2 text-base-300">
               {movieDetails.title}
             </h2>
-            <h2 className="text-xl font-bold mb-2 ml-10">
+            <h2 className="text-xl font-bold mb-2 ml-10 text-base-300">
               {movieDetails.release_date}
             </h2>
           </div>
-          <p className="text-sm text-gray-700">{movieDetails.overview}</p>
-          <text className="m-5">Similar Movies: </text>
+          <p className="text-sm text-base-300">{movieDetails.overview}</p>
+          <p className="m-5 text-base-300">Similar Movies: </p>
           <div className="w-full h-100 overflow-hidden flex items-center justify-center gap-2">
             {similarMoviePosters.map((moviePosterPath, index) => (
               <div
