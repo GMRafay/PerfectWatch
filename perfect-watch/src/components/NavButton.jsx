@@ -16,11 +16,13 @@ export default function NavButton({
   return (
     <button
       className={`w-[50%] border-black btn ${
-        active != content ? "btn-secondary" : "btn-primary"
-      } pl-5 pr-5 transition-colors duration-700 ease-in-out`}
+        active !== content ? "btn-outline" : "btn-primary"
+      } transition-colors duration-700 ease-in-out`}
       onClick={() => handleClick()}
     >
-      <p className="text-black">{children}</p>
+      <p className={`${active !== content ? "text-black" : "text-white"}`}>
+        {children}
+      </p>
     </button>
   );
 }
