@@ -48,7 +48,7 @@ export default function Picks({ picks }) {
         </div>
       )}
       <dialog id="random_modal" className="modal" ref={modal}>
-        <div className="modal-box">
+        <div className="modal-box bg-primary-content text-base-300">
           <h3 className="font-bold text-lg">Your Random Pick 🎲</h3>
           <p className="py-4">
             {randomPick ? randomPick.title : "No pick yet"}
