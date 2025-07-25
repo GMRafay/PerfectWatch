@@ -10,7 +10,7 @@ const tmdb = axios.create({
 
 export const fetchPopularMovies = async () => {
   const res = await tmdb.get(
-    `/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&certification_country=US&certification.lte=R&without_keywords=159551`
+    `/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&certification_country=US&certification.lte=R&without_keywords=159551&primary_release_date.gte=1995-01-01`
   );
   return res.data.results;
 };
@@ -22,7 +22,7 @@ export const fetchGenres = async () => {
 
 export const fetchMoviesByGenre = async (genre, page = 1) => {
   const res = await tmdb.get(
-    `/discover/movie?include_adult=false&include_video=false&certification.lte=R&language=en-US&page=${page}&with_genres=${genre}&sort_by=popularity.desc&certification.lte=R&without_keywords=159551`
+    `/discover/movie?include_adult=false&include_video=false&certification.lte=R&language=en-US&page=${page}&with_genres=${genre}&sort_by=popularity.desc&certification.lte=R&without_keywords=159551&primary_release_date.gte=1995-01-01`
   );
   return res.data.results;
 };
