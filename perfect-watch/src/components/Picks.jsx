@@ -6,6 +6,7 @@ export default function Picks({ picks }) {
   const [genres, setGenres] = useState([]);
   const [prompt, setPrompt] = useState([]);
   const [randomPick, setRandomPick] = useState([]);
+  const baseImgUrl = "http://image.tmdb.org/t/p/original";
   useEffect(() => {
     async function getGenres() {
       try {
@@ -22,10 +23,10 @@ export default function Picks({ picks }) {
   const modal = useRef();
 
   function handleRandom() {
-    const randomIndex = picks[Math.floor(Math.random() * picks.length)];
-    setRandomPick(picks[randomIndex]);
+    const random = picks[Math.floor(Math.random() * picks.length)];
+    setRandomPick(random);
     modal.current.showModal();
-    console.log(randomPick.title);
+    console.log(picks);
   }
 
   return (
@@ -35,7 +36,7 @@ export default function Picks({ picks }) {
       </text>
       {picks.length != 0 && (
         <div className="flex items-center justify-center">
-          <button onClick={() => handleRandom()} className="border-black text-black">
+          <button onClick={handleRandom} className="border-black text-black">
             Randomized Pick❓
           </button>
           <input
@@ -46,12 +47,13 @@ export default function Picks({ picks }) {
           <button className="text-black">Ask Ai ?</button>
         </div>
       )}
-      <dialog id="random_modal" className="modal">
+      <dialog id="random_modal" className="modal" ref={modal}>
         <div className="modal-box">
           <h3 className="font-bold text-lg">Your Random Pick 🎲</h3>
           <p className="py-4">
             {randomPick ? randomPick.title : "No pick yet"}
           </p>
+          <img src={baseImgUrl+randomPick.poster_path}></img>
           <div className="modal-action">
             <form method="dialog">
               <button className="btn">Close</button>
