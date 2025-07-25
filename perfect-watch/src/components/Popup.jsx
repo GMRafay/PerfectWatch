@@ -59,7 +59,7 @@ export function Popup({ movie_id, setDisplayPopup, setPicks, picks }) {
     <div className="fixed inset-0 z-50 flex items-center justify-center ">
       <div className="bg-white w-[90%] max-w-2xl h-[80vh] overflow-y-auto rounded-lg shadow-lg p-6">
         <button
-          className="fixed z-51 text-black"
+          className="fixed z-51 btn btn-primary"
           onClick={() => setDisplayPopup(false)}
         >
           Go Back
@@ -90,14 +90,14 @@ export function Popup({ movie_id, setDisplayPopup, setPicks, picks }) {
           <p className="text-sm text-base-300">{movieDetails.overview}</p>
           <p className="m-5 text-base-300">Similar Movies: </p>
           <div className="w-full h-100 overflow-hidden flex items-center justify-center gap-2">
-            {similarMoviePosters.map((moviePosterPath, index) => (
+            {similarMoviePosters.slice(0,6).map((moviePosterPath, index) => (
               <div
                 key={index}
                 onClick={() => handleClick(index)}
                 className={`h-full rounded-2xl bg-black cursor-pointer transition-all duration-500 ease-in-out ${
                   expanded === index
-                    ? "w-[70%]"
-                    : "w-[3.68%] overflow-hidden block"
+                    ? "w-[50%]"
+                    : "w-[10%] overflow-hidden block"
                 }`}
               >
                 <img
