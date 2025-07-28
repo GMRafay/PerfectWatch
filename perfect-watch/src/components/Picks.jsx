@@ -36,20 +36,17 @@ export default function Picks({ picks }) {
       </text>
       {picks.length != 0 && (
         <div className="flex items-center gap-5 justify-center w-full ">
-          <button onClick={handleRandom} className="btn btn-primary">
+          <button onClick={handleRandom} className="btn btn-primary-content">
             Randomized Pick❓
           </button>
           <div className="bg-white">
-
-          <input
-            type="text"
-            className="bg-white mr-5 w-100 text text-base-300"
-            placeholder="Describe the type of movie you would like to watch"
-            onChange={(e) => setPrompt(e.target.value)
-        
-            }
-          />
-          <button className="btn btn-">Ask Ai ?</button>
+            <input
+              type="text"
+              className="bg-white mr-5 w-100 text text-base-300"
+              placeholder="Describe the type of movie you would like to watch"
+              onChange={(e) => setPrompt(e.target.value)}
+            />
+            <button className="btn btn-">Ask Ai ?</button>
           </div>
         </div>
       )}
@@ -59,7 +56,7 @@ export default function Picks({ picks }) {
           <p className="py-4">
             {randomPick ? randomPick.title : "No pick yet"}
           </p>
-          <img src={baseImgUrl+randomPick.poster_path}></img>
+          <img src={baseImgUrl + randomPick.poster_path}></img>
           <div className="modal-action">
             <form method="dialog">
               <button className="btn">Close</button>
